@@ -11,7 +11,7 @@ public class Constants {
     public static String sushiURL = "https://foodmiles.com.ua/";
 
     public static String nameForOrder = "Белла";
-    public static String telephoneForOrder = "00123456789";
+    public static String telephoneForOrder = "0012345678967";
     public static String streetForOrder = "Космонавтов";
     public static String blockForOrder = "10/12";
 
