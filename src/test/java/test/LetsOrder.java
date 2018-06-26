@@ -30,7 +30,7 @@ public class LetsOrder {
 
     @BeforeClass
     public static void beforeClass() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Chromedriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", ".//src//main//java//home//sushiorder//libs//driver//chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         ukrNetLoginPage = new UkrNetLoginPage(driver);
