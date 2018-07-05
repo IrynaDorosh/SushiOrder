@@ -40,25 +40,33 @@ public class LetsOrder {
 
     }
 
+    /**
+     * Robot sends mails to participants and ask to send back mails with links for order
+     * @throws InterruptedException
+     */
+
     @Test
     public void sendMailToParticipants() throws InterruptedException {
 
-
             loginToMailbox();
 
-        //send mails to participants and ask to send back links with food for order
         actions.doubleClick(ukrNetMailboxPage.createLetter)
                 .perform();
 
-        actions.sendKeys(ukrNetMailboxPage.toField, Constants.recepient1)
-                .sendKeys(ukrNetMailboxPage.subjectField, Constants.subjectLetter)
+        actions.sendKeys(ukrNetMailboxPage.toField, Constants.RECEPIENT1)
+                .sendKeys(ukrNetMailboxPage.subjectField, Constants.SUBJECT_LETTER)
                 .sendKeys(Keys.TAB)
-                .sendKeys(Constants.letterItself)
+                .sendKeys(Constants.LETTER_ITSELF)
                 .click(ukrNetMailboxPage.sendButton)
                 .perform();
         WebDriverWait waitSend = new WebDriverWait(driver, 10);
         waitSend.until(ExpectedConditions.titleIs("Лиcт надіслано • sssushi@ukr.net"));
     }
+
+    /**
+     * This Test creates order
+     * @throws InterruptedException
+     */
 
     @Test
     public void createOrder() throws InterruptedException {
@@ -82,7 +90,7 @@ public class LetsOrder {
         }
 
         //navigate to sushi site
-        driver.get(Constants.sushiURL);
+        driver.get(Constants.SUSHIURL);
         driver.manage().window().maximize();
         if (FoodmilesPages.closeButton.isEnabled()) {
             FoodmilesPages.closeButton.click();
@@ -99,10 +107,10 @@ public class LetsOrder {
 
         //order confirmation
         FoodmilesPages.finalOrderButton.click();
-        actions.sendKeys(FoodmilesPages.obligatoryNameField, Constants.nameForOrder)
-                .sendKeys(FoodmilesPages.obligatoryTelephoneField, Constants.telephoneForOrder)
-                .sendKeys(FoodmilesPages.obligatoryStreetField, Constants.streetForOrder)
-                .sendKeys(FoodmilesPages.obligatoryBlockField, Constants.blockForOrder)
+        actions.sendKeys(FoodmilesPages.obligatoryNameField, Constants.NAME_FOR_ORDER)
+                .sendKeys(FoodmilesPages.obligatoryTelephoneField, Constants.TELEPHONE_FOR_ORDER)
+                .sendKeys(FoodmilesPages.obligatoryStreetField, Constants.STREET_FOR_ORDER)
+                .sendKeys(FoodmilesPages.obligatoryBlockField, Constants.BLOCK_FOR_ORDER)
                 .contextClick(FoodmilesPages.confirmOrderButton)
 //                .click(FoodmilesPages.confirmOrderButton)
                 .perform();
@@ -116,9 +124,9 @@ public class LetsOrder {
     }
 
     private void loginToMailbox() {
-        driver.get(Constants.mailURL);
-        actions.sendKeys(ukrNetLoginPage.loginField, Constants.loginValue)
-                .sendKeys(ukrNetLoginPage.passField, Constants.passValue)
+        driver.get(Constants.MAIL_URL);
+        actions.sendKeys(ukrNetLoginPage.loginField, Constants.LOGIN_VALUE)
+                .sendKeys(ukrNetLoginPage.passField, Constants.PASS_VALUE)
                 .sendKeys(Keys.ENTER).perform();
 
         WebDriverWait wait = new WebDriverWait(driver, 5);

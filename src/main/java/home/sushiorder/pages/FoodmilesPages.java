@@ -16,7 +16,7 @@ public class FoodmilesPages {
     @FindBy(className="white-saas-generator-btn-cancel")
     public static WebElement closeButton;
 
-    @FindBy(name = "add-to-cart")
+    @FindBy(xpath="//button[contains(@class, 'single_add_to_cart_button ')]")
     public static WebElement orderButton;
 
     @FindBy(className = "flycartcount")
